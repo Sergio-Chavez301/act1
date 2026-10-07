@@ -1,3 +1,4 @@
+// sw.js
 const staticCacheName = 'site-static-v1';
 
 self.addEventListener('install', (event) => {
