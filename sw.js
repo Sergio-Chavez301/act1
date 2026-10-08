@@ -25,39 +25,39 @@ self.addEventListener('fetch', event => {
 
             return response || fetch(event.request);
 
-            //if (event.response.url === 'http://127.0.0.0:5500/act1/openEditors/obj.png') {
-            //    return fetch('http://picsum.photos/800');
-            //} else {
-            //    return response;
-            //}
+        if (event.response.url === 'https://denis-act1.netlify.app/obj.png') {
+               return fetch('http://picsum.photos/800');
+            } else {
+                return response;
+            }
 
-            //if (event.request.url === 'http://127.0.0.0:5500/act1/openEditors/obj.png') {
-            //    return fetch('http://picsum.photos/800')
-            //    .then(res => {
-            //        return caches.open('v1').then(cache => {
-            //            cache.put(event.request, res.clone());
-            //            return res;
-            //        })
-            //    });
-            //} else {
-            //    return response;
-            //}
+            if (event.request.url === 'https://denis-act1.netlify.app/obj.png') {
+                return fetch('http://picsum.photos/800')
+                .then(res => {
+                   return caches.open('v1').then(cache => {
+                       cache.put(event.request, res.clone());
+                        return res;
+                    })
+                });
+            } else {
+               return response;
+            }
 
-            // if (event.request.url === 'http://127.0.0.0:5500/act1/openEditors/obj.png') {
-               // return fetch('http://picsum.photos/800')
-                // .then(res => {
-                   // return caches.open('v1').then(cache => {
-                        //cache.put(event.request, res.clone());
-                        //return res;
-                    //})
-                //});
-            //} else {
-              //  return response;
-            //}
+             if (event.request.url === 'https://denis-act1.netlify.app/obj.png') {
+                return fetch('http://picsum.photos/800')
+                 .then(res => {
+                    return caches.open('v1').then(cache => {
+                        cache.put(event.request, res.clone());
+                            return res;
+                    })
+                });
+            } else {
+               return response;
+            }
 
-            //return fetch('http://jsonplaceholder.typicode.com/todos/1')
+            return fetch('http://jsonplaceholder.typicode.com/todos/1')
 
-            //return response('');
+            return response('');
             
         })
         .catch(err => {
