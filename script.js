@@ -1,13 +1,35 @@
-// script.js
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker
-      .register('./sw.js')
-      .then((registration) => {
-        console.log('Service worker registered:', registration);
+let registration = null;
+
+function register_service_worker() {
+  if ('serviceWorker' in navigator) {
+      window.navigator.serviceWorker.register('./sw.js', { scope: './' })
+      .then((res) => {
+        registration = res;
+        console.log('Service worker successfully registered:');
       })
-      .catch((error) => {
-        console.log('Service worker registration failed:', error);
+      .catch(err => {
+        console.log('could not register service worker');
       });
-  });
+  }
 }
+
+function   unregister_service_worker() {
+  navigator.serviceWorker.getRegistrations()
+  .then((registrations) => {
+    registrations.forEach((registration) => {
+      registration .unregister();
+      console.log('Service worker unregistered:');
+    })
+  })
+  .catch((error) => {
+    console.log('could not unregister service worker:');
+  }); 
+} 
+
+window.addEventListener('click', () => {
+  fetch('./obj.png')
+    .then(res => console.log('from script.js:', res))
+});
+
+register_service_worker();
+//unregister_service_worker();
